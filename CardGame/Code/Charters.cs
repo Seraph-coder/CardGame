@@ -1,10 +1,9 @@
-﻿using Microsoft.Xna.Framework;
-using System;
+﻿using System;
 
 
 namespace CardGame.Code
 {
-    public class GameObjects
+    public class Charters
     {
         public class Character
         {
@@ -51,7 +50,7 @@ namespace CardGame.Code
 
                 }
             }
-            public void IncreaseStats(Card card)
+            public void IncreaseStats(Cards card)
             {
                 Attack += card.Attack;
                 Health += card.Health;

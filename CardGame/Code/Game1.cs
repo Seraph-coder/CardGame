@@ -22,8 +22,8 @@ namespace CardGame.Code
         private TimeSpan _endGameTimer;
         private readonly TimeSpan _endGameDuration = TimeSpan.FromSeconds(2);
 
-        private GameObjects.Character _player;
-        private GameObjects.Character _enemy;
+        private Charters.Character _player;
+        private Charters.Character _enemy;
         private Random _random;
         private bool _playerTurn;
         private bool _enemyTurn;
@@ -32,8 +32,8 @@ namespace CardGame.Code
         private const float EnemyTurnDelaySeconds = 1f;
         private int _enemiesDefeated;
 
-        private Card[] _cards;
-        private Card[] _currentCards;
+        private Cards[] _cards;
+        private Cards[] _currentCards;
         private Rectangle[] _cardRectangles;
 
         public Game1()
@@ -45,8 +45,8 @@ namespace CardGame.Code
 
         protected override void Initialize()
         {
-            _player = new GameObjects.Character(accuracy: 35, evasion: 35, attack: 10, health: 100, maxHealth: 100);
-            _enemy = new GameObjects.Character(accuracy: 25, evasion: 25, attack: 10, health: 100, maxHealth: 100);
+            _player = new Charters.Character(accuracy: 35, evasion: 35, attack: 10, health: 100, maxHealth: 100);
+            _enemy = new Charters.Character(accuracy: 25, evasion: 25, attack: 10, health: 100, maxHealth: 100);
             _random = new Random();
             _playerTurn = true;
             _enemyTurn = false;
@@ -59,7 +59,7 @@ namespace CardGame.Code
             _victory = false;
             _endGameTimer = TimeSpan.Zero;
 
-            _cards = Card.GenerateCards();
+            _cards = Cards.GenerateCards();
 
             base.Initialize();
         }
@@ -172,7 +172,7 @@ namespace CardGame.Code
                 }
                 else
                 {
-                    _enemy = new GameObjects.Character(accuracy: 25 + (_enemiesDefeated * 5), evasion: 25 + (_enemiesDefeated * 5), attack: 10 + _enemiesDefeated * 1, health: 100 + (_enemiesDefeated * 10), maxHealth: 100 + (_enemiesDefeated * 10));
+                    _enemy = new Charters.Character(accuracy: 25 + (_enemiesDefeated * 5), evasion: 25 + (_enemiesDefeated * 5), attack: 10 + _enemiesDefeated * 1, health: 100 + (_enemiesDefeated * 10), maxHealth: 100 + (_enemiesDefeated * 10));
                     _player.Health = _player.MaxHealth;
                     _currentCards = _cards.OrderBy(x => _random.Next()).Take(3).ToArray();
                     _cardRectangles = new Rectangle[3];
@@ -315,8 +315,8 @@ namespace CardGame.Code
 
         private void RestartGame()
         {
-            _player = new GameObjects.Character(accuracy: 35, evasion: 35, attack: 10, health: 100, maxHealth: 100);
-            _enemy = new GameObjects.Character(accuracy: 25, evasion: 25, attack: 10, health: 100, maxHealth: 100);
+            _player = new Charters.Character(accuracy: 35, evasion: 35, attack: 10, health: 100, maxHealth: 100);
+            _enemy = new Charters.Character(accuracy: 25, evasion: 25, attack: 10, health: 100, maxHealth: 100);
             _random = new Random();
             _playerTurn = true;
             _enemyTurn = false;
@@ -329,7 +329,7 @@ namespace CardGame.Code
             _victory = false;
             _endGameTimer = TimeSpan.Zero;
 
-            _cards = Card.GenerateCards();
+            _cards = Cards.GenerateCards();
         }
 
         private Texture2D CreateTexture(Color color, int width, int height)

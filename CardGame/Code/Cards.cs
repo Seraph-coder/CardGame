@@ -1,15 +1,13 @@
-﻿using System;
-
-namespace CardGame.Code
+﻿namespace CardGame.Code
 {
-    public class Card
+    public class Cards
     {
         public int Attack { get; private set; }
         public int Health { get; private set; }
         public int Accuracy { get; private set; }
         public int Evasion { get; private set; }
 
-        public Card(int attack, int health, int accuracy, int evasion)
+        public Cards(int attack, int health, int accuracy, int evasion)
         {
             Attack = attack;
             Health = health;
@@ -17,9 +15,9 @@ namespace CardGame.Code
             Evasion = evasion;
         }
 
-        public static Card[] GenerateCards()
+        public static Cards[] GenerateCards()
         {
-            return new Card[]
+            return new Cards[]
             {
                 new(attack: 5, health: 1, accuracy: -2, evasion: -5),
                 new(attack: 2, health: 5, accuracy: 3, evasion: -2),
